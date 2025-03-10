@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 350px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .toggle {
+            margin-top: 10px;
+            cursor: pointer;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 id="formTitle">Login</h2>
+    
+    <form id="loginForm" method="POST" action="index.php">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" name="login">Login</button>
+    </form>
+
+    <form id="registerForm" method="POST" action="index.php" style="display: none;">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" name="register">Register</button>
+    </form>
+
+    <p class="toggle" onclick="toggleForms()">Don't have an account? Register</p>
+</div>
+
+<script>
+    function toggleForms() {
+        let loginForm = document.getElementById("loginForm");
+        let registerForm = document.getElementById("registerForm");
+        let formTitle = document.getElementById("formTitle");
+        let toggleText = document.querySelector(".toggle");
+
+        if (loginForm.style.display === "none") {
+            loginForm.style.display = "block";
+            registerForm.style.display = "none";
+            formTitle.innerText = "Login";
+            toggleText.innerText = "Don't have an account? Register";
+        } else {
+            loginForm.style.display = "none";
+            registerForm.style.display = "block";
+            formTitle.innerText = "Register";
+            toggleText.innerText = "Already have an account? Login";
+        }
+    }
+</script>
+
+</body>
+</html>
